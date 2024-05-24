@@ -10,8 +10,9 @@ COPY --chown=appuser:appgroup package.json yarn.lock ./
 # Copie le reste des fichiers de l'application
 COPY --chown=appuser:appgroup . .
 
-# Installe les dépendances de production avec yarn
+# Installe les dépendances de production avec yarn, y compris pm2
 RUN yarn install --frozen-lockfile --production && \
+    yarn global add pm2 && \
     yarn cache clean
 
 # Définit des labels pour la métadonnée

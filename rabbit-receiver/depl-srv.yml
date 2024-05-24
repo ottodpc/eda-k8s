@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbit-receiver
+  namespace: otto-cyprien
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbit-receiver
+  template:
+    metadata:
+      labels:
+        app: rabbit-receiver
+    spec:
+      containers:
+        - name: rabbit-receiver
+          image: cyprienotto/rabbit-receiver:0.0.1
+          envFrom:
+            - configMapRef:
+                name: rabbit-config
+          ports:
+            - containerPort: 5672
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbit-receiver-service
+  namespace: otto-cyprien
+spec:
+  selector:
+    app: rabbit-receiver
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5672

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq-config
+  namespace: otto-cyprien
+data:
+  RABBITMQ_HOST: 'production-rabbitmqcluster'
+  RABBITMQ_USER: 'guest'
+  RABBITMQ_PASSWORD: 'guest'
+  RABBITMQ_URL: 'amqp://production-rabbitmqcluster:5672'
+  QUEUE: 'otto-cyprien-tasks'
+  INTERVAL: '1000'

@@ -1,7 +1,8 @@
 import amqplib from 'amqplib'
 
-const RABBITMQ_URL = process.env.RABBITMQ_URL || 'amqp://localhost:5672'
-const QUEUE = process.env.QUEUE || 'tasks'
+const RABBITMQ_URL =
+  process.env.RABBITMQ_URL || 'amqp://production-rabbitmqcluster:5672'
+const QUEUE = process.env.QUEUE || 'otto-cyprien-tasks'
 const INTERVAL = process.env.INTERVAL || '1000'
 
 const run = async () => {
