@@ -23,4 +23,4 @@ LABEL version="1.0.0" \
 # Configure l'utilisateur non-root
 USER appuser
 
-CMD [ "node", "main" ]
+CMD [ "npm", "start" ]
