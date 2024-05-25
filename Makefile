@@ -13,6 +13,11 @@ db:
 db:
 	cd ./database && ./build.sh && docker push cyprienotto/database:0.0.1 && cd ..
 
+dsdb:
+dsdb:
+	cd ./database && kubectl apply -f depl-srv.yml && cd ..
+
+
 back:
 back:
 	cd ./backend && docker build -t cyprienotto/backend:0.0.1 . && docker push cyprienotto/backend:0.0.1 && cd ..
